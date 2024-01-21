@@ -5,15 +5,19 @@ import java.util.Scanner;
 @SuppressWarnings("FieldCanBeLocal")
 public class Game {
     private final char PENCIL_SYMBOL = '|';
+    private final int PENCIL_LIMIT = 3;
+    private final String BOT_NAME = "Jack";
     private int pencils;
 
     private final String first;
     private final String next;
+    private final Bot bot;
 
     public Game(Integer pencilsQty, String first, String next) {
         this.first = first;
         this.next = next;
 
+        this.bot = new Bot(BOT_NAME, PENCIL_LIMIT);
         this.init(pencilsQty);
     }
 
@@ -40,9 +44,15 @@ public class Game {
             int grab;
 
             try {
-                grab = Integer.parseInt(sc.nextLine());
+                // bot turn logic
+                if (this.bot.name.equals(currentTurn)) {
+                    grab = this.bot.turn(this.pencils);
+                    System.out.println(grab);
+                } else {
+                    grab = Integer.parseInt(sc.nextLine());
+                }
 
-                if ((grab < 1) || (grab > 3)) {
+                if ((grab < 1) || (grab > PENCIL_LIMIT)) {
                     throw new NumberFormatException("Not a possible value");
                 } else if ((grab > this.pencils)) {
                     throw new IllegalArgumentException("Too many pencils were taken");

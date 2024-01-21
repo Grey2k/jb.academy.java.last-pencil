@@ -555,6 +555,12 @@ files:
           }
       }
     learner_created: true
+  - name: src/lastpencil/Bot.java
+    visible: true
+    learner_created: true
 feedback_link: https://hyperskill.org/learn/step/28002#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Sun, 21 Jan 2024 16:28:53 UTC"
 record: -1
