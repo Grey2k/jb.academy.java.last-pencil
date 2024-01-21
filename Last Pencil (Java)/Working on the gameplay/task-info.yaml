@@ -237,6 +237,44 @@ files:
           }
       }
     learner_created: false
-feedback_link: https://hyperskill.org/projects/341/stages/2007/implement#comment
-status: Unchecked
-record: -1
+  - name: src/lastpencil/Game.java
+    visible: true
+    text: |
+      package lastpencil;
+      
+      @SuppressWarnings("FieldCanBeLocal")
+      public class Game {
+          private final char PENCIL_SYMBOL = '|';
+          private String[] pencils;
+      
+          private final String first;
+          private final String next;
+      
+          public Game(Integer pencilsQty, String first, String next) {
+              this.first = first;
+              this.next = next;
+      
+              this.init(pencilsQty);
+          }
+      
+          private void init(Integer pencilQty) {
+              this.pencils = new String[pencilQty];
+              for (int i = 0; i < pencilQty; i++) {
+                  this.pencils[i] = String.valueOf(PENCIL_SYMBOL);
+              }
+      
+              this.printPencils();
+              System.out.printf("%s is going first!%n", this.first);
+          }
+      
+          public void printPencils() {
+              System.out.println(String.join("", pencils));
+          }
+      }
+    learner_created: true
+feedback_link: https://hyperskill.org/learn/step/28000#comment
+status: Failed
+feedback:
+  message: Execution failed
+  time: "Sun, 21 Jan 2024 15:36:29 UTC"
+record: 3
